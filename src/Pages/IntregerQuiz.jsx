@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { saveQuizResult } from "../IndexedDB/IndexedDB";
+import { useNavigate } from "react-router-dom"; 
 
 const IntregerQuiz = () => {
+  const navigate = useNavigate();
+
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -9,7 +12,6 @@ const IntregerQuiz = () => {
   const [quizFinished, setQuizFinished] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
 
-  
   useEffect(() => {
     fetch('/CQ.json')
       .then((res) => res.json())
@@ -20,7 +22,6 @@ const IntregerQuiz = () => {
       .catch((error) => console.error("Error:", error));
   }, []);
 
- 
   useEffect(() => {
     if (timeLeft === 0) {
       goToNextQuestion();
@@ -51,8 +52,12 @@ const IntregerQuiz = () => {
       setTimeLeft(30);
     } else {
       setQuizFinished(true);
-      saveQuizResult(score, questions.length)
+      saveQuizResult(score, questions.length);
     }
+  };
+
+  const handleRestart = () => {
+    navigate(0); 
   };
 
   const currentQuestion = questions[currentIndex];
@@ -66,7 +71,7 @@ const IntregerQuiz = () => {
             Your Final Score: <span className="text-blue-500">{score}</span> / {questions.length}
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={handleRestart} 
             className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
           >
             Restart Quiz 🔄

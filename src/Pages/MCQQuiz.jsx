@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { saveQuizResult } from "../IndexedDB/IndexedDB";
+import { useNavigate } from "react-router-dom"; 
 
 const MCQQuiz = () => {
+  const navigate = useNavigate(); 
+
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -50,7 +53,7 @@ const MCQQuiz = () => {
       setTimeLeft(30);
     } else {
       setQuizFinished(true);
-      saveQuizResult(score, questions.length)
+      saveQuizResult(score, questions.length);
     }
   };
 
@@ -63,7 +66,7 @@ const MCQQuiz = () => {
             Your Final Score: <span className="text-blue-500">{score}</span> / {questions.length}
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={() => navigate(0)} 
             className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
           >
             Restart Quiz 🔄
