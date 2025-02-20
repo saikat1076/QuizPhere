@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { saveQuizResult } from "../IndexedDB/IndexedDB";
-import { useNavigate } from "react-router-dom"; 
 
 const MCQQuiz = () => {
-  const navigate = useNavigate(); 
-
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -31,10 +28,12 @@ const MCQQuiz = () => {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
+
   if (questions.length === 0) {
     return <p className="text-center text-lg font-semibold">Loading Quiz...</p>;
   }
 
+ 
   const handleAnswerClick = (index) => {
     setSelectedAnswer(index);
     if (index === questions[currentIndex].answer) {
@@ -57,6 +56,17 @@ const MCQQuiz = () => {
     }
   };
 
+
+  const handleRestart = () => {
+    setCurrentIndex(0);
+    setScore(0);
+    setSelectedAnswer(null);
+    setTimeLeft(30);
+    setQuizFinished(false);
+  };
+
+  const currentQuestion = questions[currentIndex];
+
   if (quizFinished) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -66,7 +76,7 @@ const MCQQuiz = () => {
             Your Final Score: <span className="text-blue-500">{score}</span> / {questions.length}
           </p>
           <button
-            onClick={() => navigate(0)} 
+            onClick={handleRestart} // Reset the quiz state instead of reloading
             className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
           >
             Restart Quiz 🔄
@@ -75,8 +85,6 @@ const MCQQuiz = () => {
       </div>
     );
   }
-
-  const currentQuestion = questions[currentIndex];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

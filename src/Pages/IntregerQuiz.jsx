@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { saveQuizResult } from "../IndexedDB/IndexedDB";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const IntregerQuiz = () => {
   const navigate = useNavigate();
@@ -56,8 +56,13 @@ const IntregerQuiz = () => {
     }
   };
 
+  // Logic to handle quiz restart
   const handleRestart = () => {
-    navigate(0); 
+    setScore(0);
+    setCurrentIndex(0);
+    setAnswer('');
+    setTimeLeft(30);
+    setQuizFinished(false);
   };
 
   const currentQuestion = questions[currentIndex];
@@ -71,7 +76,7 @@ const IntregerQuiz = () => {
             Your Final Score: <span className="text-blue-500">{score}</span> / {questions.length}
           </p>
           <button
-            onClick={handleRestart} 
+            onClick={handleRestart} // Call handleRestart to reset the quiz state
             className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
           >
             Restart Quiz 🔄
