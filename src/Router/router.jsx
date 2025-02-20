@@ -5,6 +5,7 @@ import Layouts from "../Layouts/Layouts";
 import Home from "../Pages/Home";
 import MCQQuiz from "../Pages/MCQQuiz";
 import IntregerQuiz from "../Pages/IntregerQuiz";
+import QuizRules from "../Pages/QuizRules";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
           path: '/cq-exam',
           element:<IntregerQuiz></IntregerQuiz>
+        },
+        {
+          path: '/rules',
+          element:<QuizRules></QuizRules>
         }
         
       ]

@@ -15,16 +15,16 @@ const QuizBanner = () => {
           Discover new topics and expand your learning with every quiz!
         </p>
 
-        {/* Search Bar */}
-        <div className="mt-6 relative w-full md:w-3/4">
-          <input
-            type="text"
-            placeholder="Search for quizzes..."
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-all">
-            🔍 Search
-          </button>
+        <div className="mt-6">
+          <h2 className="text-2xl font-semibold">Get Started Now 👇</h2>
+          <div className="mt-4 flex flex-col md:flex-row gap-4">
+            <NavLink to="/mcq-exam" className="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-500 transition-all text-lg">
+              📝 MCQ Exam
+            </NavLink>
+            <NavLink to="/cq-exam" className="px-6 py-3 bg-green-400 text-black font-bold rounded-lg shadow-lg hover:bg-green-500 transition-all text-lg">
+              🖊️ CQ Exam
+            </NavLink>
+          </div>
         </div>
 
         {/* Key Features */}
@@ -43,12 +43,7 @@ const QuizBanner = () => {
           </div>
         </div>
 
-        {/* Buttons for MCQ & CQ Exam */}
-        <div className="mt-6 flex space-x-4">
-          <NavLink to='/mcq-exam' className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition-all">📝 MCQ Exam</NavLink>
-          <NavLink to='/cq-exam' className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition-all"> 🖊️ CQ Exam</NavLink>
-          
-        </div>
+        
 
       </div>
 
