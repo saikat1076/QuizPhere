@@ -6,6 +6,7 @@ import Home from "../Pages/Home";
 import MCQQuiz from "../Pages/MCQQuiz";
 import IntregerQuiz from "../Pages/IntregerQuiz";
 import QuizRules from "../Pages/QuizRules";
+import QuizHistory from "../Pages/QuizHIstory";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         {
           path: '/',
           element:<Home></Home>
+        },
+        {
+          path: '/quiz-history',
+          element:<QuizHistory></QuizHistory>
         },
         {
           path: '/mcq-exam',

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { saveQuizResult } from "../IndexedDB/IndexedDB";
 
 const IntregerQuiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -50,6 +51,7 @@ const IntregerQuiz = () => {
       setTimeLeft(30);
     } else {
       setQuizFinished(true);
+      saveQuizResult(score, questions.length)
     }
   };
 

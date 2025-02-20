@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const navItems = <>
     <li>
-      <NavLink to='/'>Home</NavLink>
+    <NavLink className={({ isActive }) => `font-bold text-lg ${isActive ? "rounded-md btn bg-blue-600" : "rounded-md btn btn-outline"}`} to="/">Home</NavLink>
     </li>
+    <li> <NavLink className={({ isActive }) => `font-bold text-lg ${isActive ? "rounded-md btn bg-blue-600" : "rounded-md btn btn-outline"}`} to="/quiz-history">QuizHistory</NavLink></li>
   </>
   return (
     <div className="navbar bg-black text-white">
@@ -26,14 +27,14 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content gap-4 bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
             {navItems}
           </ul>
         </div>
         <a className="text-xl bg-gradient-to-tr">QuizSphere</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-4">
           {navItems}
         </ul>
       </div>
